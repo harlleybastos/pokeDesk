@@ -1,0 +1,56 @@
+let lista = document.getElementById('lista-de-pokemons'); // Buscando na HTML a Div com a lista de pokemons
+
+const coloracaoTipos = { //ARRAY COM COR DOS TIPOS DE POKEMONS
+    fire: '#FDDFDF',
+    grass: '#DEFDE0',
+    eletric: '#FCF7DE',
+    water: '#DEF3FD',
+    ground:'#f4e7da',
+    rock:'#d5d5d4',
+    fairy:'#fceaff',
+    poison:'#98d7a5',
+    bug:'#f8d5a3',
+    dragon:'#97b3e6',
+    psychic:'#eaeda1',
+    flying:'#f5f5f5',
+    fighting:'#e6e0d4',
+    normal:'#f5f5f5'
+};
+
+const instanciaTipos = Object.keys(coloracaoTipos); // Retorna o tipo (Fire, Grass..)
+
+
+function criandoCardDoPokemon(pokemon){ // Converter os dados recebidos pelo Fetch em HTML
+    const elementoPokemon = document.createElement("div");    //Criando o card do elemento pokemon
+    elementoPokemon.classList.add("pokemon"); //Adicionando classe no elemento criado
+
+    const listaTiposPokemons = pokemon.types.map(elemento => elemento.type.name );//Entrando em pokemon.types e retornando o type.name ja tratado (Percorre o array)
+
+
+    const tiposPokemon = instanciaTipos.find(tipo => listaTiposPokemons.indexOf(tipo)
+    > -1); //Recebe os textos (Fire, Grass..) e procura o primeiro que esta
+
+    const nomePokemonComEstilo = pokemon.name[0].toUpperCase() + pokemon.name.slice(1); // Alterando o estilo da fonte de cada nome | Primeira letra maiúcula
+
+    const corDoCard = coloracaoTipos[tiposPokemon];// Recebe a cor do pokemon de acordo com o elemento
+    elementoPokemon.style.backgroundColor = corDoCard;
+    //Conteudo que vai dentro do elemento criado
+    const conteudoDaDiv = `
+        <div class="container-foto-pokemon"> 
+            <img src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${pokemon.id}.svg"/>
+        </div>
+        <div class="fundo">
+            <img class="pokeball" src="https://upload.wikimedia.org/wikipedia/commons/2/23/Pok%C3%A9_Ball.svg"
+        </div>
+        <div class="informacoes-pokemon">
+            <span class="numero-pokemon">#${pokemon.id.toString().padStart(3, '0')}</span>
+            <h3 class="nome-pokemon">${nomePokemonComEstilo}</h3>
+            <small class="tipo-pokemon">Tipo: <span>${tiposPokemon}</span></small>
+        </div>
+    
+    `;
+
+
+    elementoPokemon.innerHTML = conteudoDaDiv; // Colocando dentro da div criada todo o HTML da const ConteudodaDIV
+    lista.appendChild(elementoPokemon); // Setando a div criada como filha da div lista-de-pokemons
+}
