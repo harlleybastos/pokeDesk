@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap');
+
 *{
     box-sizing: border-box;
 }
@@ -16,7 +18,8 @@ body{
     align-items: space-between;
     justify-content: center;
     margin: 0 auto;
-    max-width: 1200px;    
+    max-width: 1200px;
+    position: relative;    
 }
 
 .pokemon{
@@ -52,19 +55,30 @@ body{
 .pokemon .informacoes-pokemon{
     margin-top: 20px;
 }
+.pokemon .informacoes-pokemon h3{
+    font-family: 'Roboto', sans-serif;
+}
 .pokemon .numero-pokemon{
     background: #fff;
     border-radius: 10px;
     font-size: 0.8em;
     padding: 5px 10px;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.pokemon .informacoes-pokemon .nome-pokemon{
+.pokemon .tipo-pokemon {
     margin: 15px 0 7px;
     letter-spacing: 1px;
 }
 
-.pokemon .informacoes-pokemon small{
-    
+.cor-badge{
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    border: black solid;
+    height: 30px;
+    box-shadow: 0 3px 5px rgba(100, 100, 100, 0.5);
+}
+.titulopok{
+    text-transform: capitalize;
 }
 

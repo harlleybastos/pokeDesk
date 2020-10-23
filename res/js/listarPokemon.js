@@ -1,4 +1,4 @@
-const numeroDePokemons = 150;
+const numeroDePokemons = 150; // Numero que o contador usa de referencia a quantidade de pokemons
 
 const consultarPokemons = async () =>{ /*Função que pega os valores digitados e aponta para função Fetch.
      Recebe como parametro o texto(nome ou ID) digitado no campo "pesquisa" e o nome da div do pokemon  */
