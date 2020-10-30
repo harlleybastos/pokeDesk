@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap');
 
+
+
 *{
     box-sizing: border-box;
 }
@@ -10,7 +12,12 @@ body{
     align-items: center;
     justify-content: center;
     margin: 0;
+    background: #ED213A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
+
 
 #lista-de-pokemons{
     display: flex;
@@ -18,7 +25,7 @@ body{
     align-items: space-between;
     justify-content: center;
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1300px;
     position: relative;    
 }
 
@@ -29,22 +36,52 @@ body{
     padding: 20px;
     margin: 10px;
     text-align: center;
+    widows: 400px;
 }
+
+.pokemon:hover{
+    animation: bounce 0.5s linear;
+    cursor: pointer;
+    background: url('https://i.imgur.com/lnFsYHy.png');
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: 95px 310px;
+}
+
+@keyframes bounce{
+    20%{
+        transform: translateY(-6px);
+    }
+    40%{
+        transform: translateY(0px);
+    }
+    60%{
+        transform: translateY(-2px);
+    }
+    80%{
+        transform: translateY(-0px);
+    }
+    
+}
+
+
 .pokemon .container-foto-pokemon{
-    position: relative;
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
-    height: 180px;
-    width: 180px;
+    height: 250px;
+    width: 250px;
     text-align: center;
 }
 .pokemon .container-foto-pokemon img{
-    margin-top: 20px;
-    max-width: 70%;    
+    margin-top: 40px;
+    max-width: 160px;
+    position: relative;
+    justify-content: center;
 }
 
 .pokemon .fundo{
-    margin-top: 20px;
+    margin-top: 40px;
 }
 .pokemon .fundo img{
     max-width: 100px;
@@ -82,3 +119,165 @@ body{
     text-transform: capitalize;
 }
 
+#pagination{
+    margin: 10px;
+
+}
+
+#paginacao_link{
+    font-size: 1.2rem;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    padding: 8px;
+    color:black;
+}
+
+#paginacao_linkativo{
+    font-size: 1.2rem;
+    font-family: 'Open Sans', sans-serif;
+    text-decoration: none;
+    padding: 8px;
+    color:red;
+}
+
+
+
+.popup{
+    background-color: #eee;
+    top:0;
+    left: 0;
+    height: 100vh;
+    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+    width: 100vw;
+    opacity: 0.95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 3;
+}
+
+.pesquisa{
+    margin-top: 50%;
+}
+.popup .container-foto-pokemon{
+    padding: 30px;
+}
+
+.popup .container-foto-pokemon img {
+    max-width: 300px;
+    top: 10%;
+    position: relative;
+}
+
+.popup .informacoes-pokemon .tipo-pokemon{
+    margin: 15px 0 7px;
+    padding-left: 20px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    text-transform: capitalize;
+}
+
+.popup .informacoes-pokemon .numero-pokemon{
+    background: #fff;
+    border-radius: 10px;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.popup .informacoes-pokemon .altura-pokemon{
+    padding-right: 20px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+.popup .informacoes-pokemon .peso-pokemon{
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+}
+.popup .informacoes-pokemon .nome-pokemon{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+}
+#fecharBTN{
+    width: 140px;
+    height: 50px;
+    top: -40%;
+    right: 5%;
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin: 0px;
+    background: #ED213A;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #93291E, #ED213A);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #93291E, #ED213A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff;
+}
+
+#fecharBTN:hover{
+    cursor: pointer;
+    
+}
+
+#barra-pesquisa{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#caixa-pesquisa{
+    width: 100vh;
+    height: 100px;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-family: 'Roboto', sans-serif;
+    margin-right: 10px;
+}
+
+#botao-pesquisa{
+    width: 200px;
+    height: 103px;
+    border-radius:10px;
+    text-align: center;
+    text-transform: uppercase;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-family: 'Open sans', sans-serif;
+    
+}
+
+#botao-pesquisa:hover{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hidden{
+    display: none;
+}
+
+.img-aviso img{
+    top: 350px;
+    margin: 0px;
+    position: absolute;
+    right:25%;
+
+}
+
+.img-aviso h1{
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-weight: uppercase;
+    font-size: 2rem;
+}
+
+.img-carrega img{
+    margin: 0px;
+    position: relative;
+}
+
+#barra-pesquisa{
+    margin: 0;
+    padding-bottom: 20px;
+}

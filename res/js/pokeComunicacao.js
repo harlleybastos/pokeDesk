@@ -5,13 +5,3 @@ const pegarPoke = async id =>{
     criandoCardDoPokemon(pokemon) // Função que cria os cards
     
 }
-
-async function pegarPokes () {
-    fetch(`https://pokeapi.co/api/v2/pokemon/?limit=25`)
-    .then(resposta => resposta.json())
-    .then(function(todosospokemons){
-       todosospokemons.count;
-    })
-    return;
-    
-}

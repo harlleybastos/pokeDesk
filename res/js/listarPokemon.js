@@ -1,12 +1,12 @@
-const numeroDePokemons = 150; // Numero que o contador usa de referencia a quantidade de pokemons
+let numeroDePokemons = 150;
+const pokedex = document.getElementById('pokedex');
 
-const consultarPokemons = async () =>{ /*Função que pega os valores digitados e aponta para função Fetch.
-     Recebe como parametro o texto(nome ou ID) digitado no campo "pesquisa" e o nome da div do pokemon  */
-
-    for(var i = 1; i <= numeroDePokemons; i++){ //Percorrendo todos os pokemons e esperando para fazer algo
-        await pegarPoke(i); // Pausar retorno da Promisse
-    }
+const consultarPokemons =  async () =>{ /*Função que replica em ordem todos os pokemons de acordo com a páginação */
+   for(var i = 1 ; i < numeroDePokemons; i++){
+        await pegarPoke(i);
+   }
     
 }
+
 
 consultarPokemons();
