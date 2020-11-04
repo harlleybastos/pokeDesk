@@ -3,8 +3,7 @@ const url = `https://pokeapi.co/api/v2/pokemon?limit=150`;
 const caixaValorDigitado = document.getElementById('caixa-pesquisa');
 const caixaPesquisa = document.getElementById('caixa-pesquisa');
 const divCaixaPesquisa = document.getElementById('barra-pesquisa');
-
-
+const pokeDiv = document.querySelector('.pokemon');
 
 
 fetch(url)
@@ -39,9 +38,10 @@ function exibirPokemon() {
         return location.replace('index.html')
     }
 
+
     if (caixaValorDigitado.value > '') { //Se o usuario estiver digitando e o for aparecendo pokemons vai acontecer isso
-        lista.innerHTML = ""; //Limpa a tela
-        pokedex.innerHTML = ""; //Limpa a tela
+
+        lista.innerHTML = "";
         const divCarrega = `
         <div class="img-aviso">
             <h1>Procurando...</h1>
@@ -49,40 +49,29 @@ function exibirPokemon() {
         </div>
         `
         pokedex.innerHTML = divCarrega;  //Insere a imagem da pokebola "Carregando.."
+        pokedex.scrollIntoView();
 
     } 
 
-    if (caixaValorDigitado.value > '' && caixaValorDigitado.value == nome) {  //Se não encontrar o pokemon acontece isso
-        pokedex.innerHTML = "" 
-        lista.innerHTML = "";
+    if (caixaValorDigitado.value == nome) {  //Se não encontrar o pokemon acontece isso
+
         const divCarregado = `
         <div class="img-carrega">
             <img src="https://i.imgur.com/1F7xFxm.gif"/>
         </div>
             `
         pokedex.innerHTML = divCarregado; // Insere a imagem de pokemon encontrado !
+        pokedex.scrollIntoView();
+
         setTimeout(function () { // Espera um tempo para aparecer o pokemon por conta do tempo do gif
-        pokedex.innerHTML = ""; // Limpa a tela
+        pokedex.innerHTML = ""
+        lista.innerHTML = "";
         caixaValorDigitado.value = ""; //Limpa a caixa de pesquisa para sair do IF
         pegarPoke(nome) // Exibe o pokemon pesquisado
-        }, 3000)
+    }, 3000)
     }
 
-    if(caixaValorDigitado.value != nome && caixaValorDigitado.value > nome) {
 
-    const avisoSemPoke = `
-        <div class="img-aviso">
-            <h1>Pokemon não encontrado !</h1>
-            <img src="https://i.imgur.com/VGtUTtC.gif"/>
-        </div>
-    `
-    
-    setTimeout(function(){
-    pokedex.innerHTML = avisoSemPoke; // IMAGEM DE ERRO
-    },3000)
-        
     }
-}
-
 caixaValorDigitado.addEventListener('change', exibirPokemon);
 caixaValorDigitado.addEventListener('keyup', exibirPokemon);

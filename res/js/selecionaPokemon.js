@@ -1,11 +1,3 @@
-const pokemonSelecionado = async (id) =>{ // Caso o pokemon seja clicado / selecionado ele invoca essa função
-    const url= `https://pokeapi.co/api/v2/pokemon/${id}`;
-    const resposta = await fetch(url);
-    const pokemon = await resposta.json();
-
-    mostrarPopUp(pokemon);
-}
-
 const mostrarPopUp = (pokemon) =>{ // Função responsável por abrir o PopUp quando o pokemon é clicado
     const tipos = pokemon.types.map(tipo => tipo.type.name).join(', ');
     const nomePokemonComEstilo = pokemon.name[0].toUpperCase() + pokemon.name.slice(1); // Alterando o estilo da fonte de cada nome | Primeira letra maiúcula
