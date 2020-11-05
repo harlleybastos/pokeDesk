@@ -4,6 +4,10 @@ const caixaValorDigitado = document.getElementById('caixa-pesquisa');
 const caixaPesquisa = document.getElementById('caixa-pesquisa');
 const divCaixaPesquisa = document.getElementById('barra-pesquisa');
 const pokeDiv = document.querySelector('.pokemon');
+const { clientHeight, scrollHeight, scrollTop } = document.documentElement; // copiando o valor das proriedades
+const usuarioPertodoFimdaPagina = scrollTop + clientHeight >= scrollHeight - 10 ; /*Checando se o usuario esta perto do fim da página | Se a distancia entre o topo e o topo visivel do documento
+somada a altura entre topo e o final da parte visivel da pagina é maior ou igual a altura total de desse documento - 10 */
+let temPoke = true; // Variavel para usar como referencia para erros
 
 
 fetch(url)
@@ -38,9 +42,9 @@ function exibirPokemon() {
         return location.replace('index.html')
     }
 
-    let temPoke = true; // Variavel para usar como referencia para erros
     
-    if (caixaValorDigitado.value > '') { //Se o usuario estiver digitando e o for aparecendo pokemons vai acontecer isso
+    if (caixaValorDigitado.value > ''&& usuarioPertodoFimdaPagina) { //Se o usuario estiver digitando e o for aparecendo pokemons vai acontecer isso
+        lista.innerHTML = "";
         temPoke = false;
         const divCarrega = `
         <div class="img-aviso">
@@ -48,17 +52,15 @@ function exibirPokemon() {
             <img src="https://i.imgur.com/p1tekMG.gif"/>      
         </div>
         `
-        lista.innerHTML = "";
         pokedex.innerHTML = divCarrega;  //Insere a imagem da pokebola "Carregando.."
         pokedex.scrollIntoView();
         setTimeout(function () {
             temPoke = true;
         }, 2000)
     }
-    console.log(temPoke);
 
-
-    if (caixaValorDigitado.value == nome && pokedex > "") {  //Se não encontrar o pokemon acontece isso
+    if (caixaValorDigitado.value == nome && pokedex > "" && usuarioPertodoFimdaPagina) {  //Se não encontrar o pokemon acontece isso
+        lista.innerHTML = ""
         temPoke = true;
         lista.scrollIntoView();
         const divCarregado = `
@@ -94,5 +96,4 @@ function exibirPokemon() {
         }
     },5000)
 }
-
 caixaValorDigitado.addEventListener('keyup', exibirPokemon);

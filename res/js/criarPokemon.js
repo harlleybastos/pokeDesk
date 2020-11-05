@@ -26,7 +26,7 @@ function criandoCardDoPokemon(pokemon){ // Converter os dados recebidos pelo Fet
     elementoPokemon.classList.add("pokemon"); //Adicionando classe no elemento criado
     elementoPokemon.onclick = function(){ //Adicionando a função de click no elemento criado com a função de s
         pokemonSelecionado(pokemon.id)
-}
+    }
 
     const listaTiposPokemons = pokemon.types.map(elemento => elemento.type.name );//Entrando em pokemon.types e retornando o type.name ja tratado (Percorre o array)
     const tiposPokemon = instanciaTipos.find(tipo => listaTiposPokemons.indexOf(tipo) > -1); //Recebe os textos (Fire, Grass..) e procura o primeiro que esta no index

@@ -282,3 +282,48 @@ body{
     margin: 0;
     padding-bottom: 20px;
 }
+
+.carregarPokes{
+    opacity: 0;
+    display: flex;
+    position: relative;
+    bottom: 5px;
+    padding: 20px;
+    margin-bottom: 30px;
+    transition: opacity 0.3s ease-in;
+}
+
+.carregarPokes.mostrar{
+    opacity: 1;
+}
+
+
+.carregarPokes .circulo{
+    background: #fff;
+    width: 25px;
+    height: 25px;
+    border-radius: 45%;
+    margin: 5px;
+    animation: ancirculo 0.5s ease-in infinite;
+}
+
+.carregarPokes .circulo:nth-of-type(2){
+    animation-delay: 0.1s;
+}
+
+.carregarPokes .circulo:nth-of-type(3){
+    animation-delay: 0.2s;
+}
+
+
+
+
+@keyframes ancirculo {
+    0%, 
+    100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-10px);
+    }
+}
