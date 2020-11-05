@@ -26,52 +26,73 @@ function exibirPokemon() {
     const resultadoPokemon = encontrarPokemon(this.value, arrayDePokemons); //Recebe o valor digitado na pesquisa como parametro e percorre o array para encontrar o mesmo
     const htmlResult = resultadoPokemon.map(pokemon => { //Mapeando e retornando os valores filtrados
         return `
-        <h3 class="hidden" id="nome-pokemon">${pokemon.name}</h3>
+        <h3 id="nome-pokemon">${pokemon.name}</h3>
         `
     }).join("")
 
     lista.innerHTML = htmlResult; // Inserindo os valores dentro da HTML
-    const nome = document.getElementById('nome-pokemon').textContent;
+    const nome = document.getElementById('nome-pokemon').textContent; // Buscando o conteudo interno dos nomes exibidos
 
     if (caixaValorDigitado.value == '') { // Se a caixa de pesquisa estiver vazia ele volta para a página incial
         lista.innerHTML = '';
         return location.replace('index.html')
     }
 
-
+    let temPoke = true; // Variavel para usar como referencia para erros
+    
     if (caixaValorDigitado.value > '') { //Se o usuario estiver digitando e o for aparecendo pokemons vai acontecer isso
-
-        lista.innerHTML = "";
+        temPoke = false;
         const divCarrega = `
         <div class="img-aviso">
             <h1>Procurando...</h1>
             <img src="https://i.imgur.com/p1tekMG.gif"/>      
         </div>
         `
+        lista.innerHTML = "";
         pokedex.innerHTML = divCarrega;  //Insere a imagem da pokebola "Carregando.."
         pokedex.scrollIntoView();
+        setTimeout(function () {
+            temPoke = true;
+        }, 2000)
+    }
+    console.log(temPoke);
 
-    } 
 
-    if (caixaValorDigitado.value == nome) {  //Se não encontrar o pokemon acontece isso
-
+    if (caixaValorDigitado.value == nome && pokedex > "") {  //Se não encontrar o pokemon acontece isso
+        temPoke = true;
+        lista.scrollIntoView();
         const divCarregado = `
         <div class="img-carrega">
-            <img src="https://i.imgur.com/1F7xFxm.gif"/>
+        <img src="https://i.imgur.com/1F7xFxm.gif"/>
         </div>
-            `
+        `
         pokedex.innerHTML = divCarregado; // Insere a imagem de pokemon encontrado !
-        pokedex.scrollIntoView();
+        lista.scrollIntoView();
 
         setTimeout(function () { // Espera um tempo para aparecer o pokemon por conta do tempo do gif
-        pokedex.innerHTML = ""
-        lista.innerHTML = "";
-        caixaValorDigitado.value = ""; //Limpa a caixa de pesquisa para sair do IF
-        pegarPoke(nome) // Exibe o pokemon pesquisado
-    }, 3000)
+            lista.innerHTML = ".";
+            caixaValorDigitado.value = ""; //Limpa a caixa de pesquisa
+            pegarPoke(nome) // Exibe o pokemon pesquisado
+            pokedex.innerHTML = "";
+            pokedex.scrollIntoView();
+        }, 3000)
     }
 
+    setTimeout(function () { // Espera um tempo (Usuario Digitando) para aparecer o erro
+        if (lista.innerHTML == "" && temPoke == true) {
+            const pokeErro = `
+            <div class="img-aviso">
+                <h1>Pokemon não encontrado !</h1>
+                <img src="https://i.imgur.com/VGtUTtC.gif"/>
+            </div>
+            `   
+            setTimeout(function () {
+                lista.innerHTML = "";
+                pokedex.innerHTML = pokeErro;
+                pokedex.scrollIntoView();
+            }, 2000)
+        }
+    },5000)
+}
 
-    }
-caixaValorDigitado.addEventListener('change', exibirPokemon);
 caixaValorDigitado.addEventListener('keyup', exibirPokemon);
