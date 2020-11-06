@@ -64,16 +64,16 @@ function exibirPokemon() {
 
     if(textoDigitadoEMaiusculo || textoDigitadoEMinusculo  && pokedex > "" && usuarioPertodoFimdaPagina){
     /* Trata oque é digitada para que se for maiusculo ou minusculo não diferenciar na busca, se tiver mais de 1 pokemon valida e se o usuario não estiver perto do fim da página  */    
+        carregarLoader.scrollIntoView ();
         const divCarregado = `
         <div class="img-carrega">
             <img src="https://i.imgur.com/1F7xFxm.gif"/>
         </div>
         `
         pokedex.innerHTML = divCarregado; // Insere a imagem de pokemon encontrado !
-        carregarLoader.scrollIntoView ();
         
         setTimeout(function () { // Espera um tempo para aparecer o pokemon por conta do tempo do gif
-            carregarLoader.scrollIntoView ();
+            lista.scrollIntoView ();
             pokedex.innerHTML = "";
             lista.innerHTML = ".";
             contagemDivLista = 1; // Usado como referencia de erro no If do erro
