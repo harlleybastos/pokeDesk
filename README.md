@@ -33,11 +33,12 @@ ___
     #Entra no repositório
     $cd pokeDesk
 
-    #Instala as dependencias
-    $yarn install
-
-    #Iniciar o projeto
-    $yarn start
+    #Abre seu editor de código usando como base a pasta
+    $code .
 ```
+
+<p ALIGN="center">Apos isso basta executar o site !</p>
+
+
 ___
 Desenvolvido por Harlley dos Santos Bastos
