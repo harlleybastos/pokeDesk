@@ -9,7 +9,6 @@ const usuarioPertodoFimdaPagina = scrollTop + clientHeight >= scrollHeight - 10 
 somada a altura entre topo e o final da parte visivel da pagina é maior ou igual a altura total de desse documento - 10 */
 let temPoke = true; // Variavel para usar como referencia para erros
 
-
 fetch(url)
     .then(resposta => resposta.json())
     .then(pokemons => arrayDePokemons.push(...pokemons.results))
@@ -25,6 +24,7 @@ function encontrarPokemon(pesquisa, arrayDePokemons) { //Função responsável p
 
 
 function exibirPokemon() {
+    carregarLoader.scrollIntoView();
     lista.innerHTML = "";
     const resultadoPokemon = encontrarPokemon(this.value, arrayDePokemons); //Recebe o valor digitado na pesquisa como parametro e percorre o array para encontrar o mesmo
     const htmlResult = resultadoPokemon.map(pokemon => { //Mapeando e retornando os valores filtrados
@@ -35,6 +35,10 @@ function exibirPokemon() {
 
     lista.innerHTML = htmlResult; // Inserindo os valores dentro da HTML
     const nome = document.getElementById('nome-pokemon').textContent; // Buscando o conteudo interno dos nomes exibidos
+    const textoDigitadoEMaiusculo = caixaValorDigitado.value.toUpperCase() == nome.toUpperCase() ;
+    const textoDigitadoEMinusculo = caixaValorDigitado.value.toLowerCase() == nome.toLowerCase();
+
+
     
     if (caixaValorDigitado.value == '') { // Se a caixa de pesquisa estiver vazia ele volta para a página incial
         lista.innerHTML = '';
@@ -52,33 +56,29 @@ function exibirPokemon() {
         </div>
         `
         pokedex.innerHTML = divCarrega;  //Insere a imagem da pokebola "Carregando.."
-        pokedex.scrollIntoView();
+
         setTimeout(function () {
             temPoke = true;
         }, 2000)
     }
 
-    if(caixaValorDigitado.value.toUpperCase() == nome.toUpperCase() || caixaValorDigitado.value.toLowerCase() == nome.toLowerCase() && pokedex > "" && usuarioPertodoFimdaPagina){
+    if(textoDigitadoEMaiusculo || textoDigitadoEMinusculo  && pokedex > "" && usuarioPertodoFimdaPagina){
     /* Trata oque é digitada para que se for maiusculo ou minusculo não diferenciar na busca, se tiver mais de 1 pokemon valida e se o usuario não estiver perto do fim da página  */    
-        
-        lista.innerHTML = ""
-        temPoke = true;
-        lista.scrollIntoView();
         const divCarregado = `
         <div class="img-carrega">
-        <img src="https://i.imgur.com/1F7xFxm.gif"/>
+            <img src="https://i.imgur.com/1F7xFxm.gif"/>
         </div>
         `
         pokedex.innerHTML = divCarregado; // Insere a imagem de pokemon encontrado !
-        lista.scrollIntoView();
-
+        carregarLoader.scrollIntoView ();
+        
         setTimeout(function () { // Espera um tempo para aparecer o pokemon por conta do tempo do gif
-            contagemDivLista = 1;
+            carregarLoader.scrollIntoView ();
+            pokedex.innerHTML = "";
             lista.innerHTML = ".";
+            contagemDivLista = 1; // Usado como referencia de erro no If do erro
             caixaValorDigitado.value = ""; //Limpa a caixa de pesquisa
             pegarPoke(nome) // Exibe o pokemon pesquisado
-            pokedex.innerHTML = "";
-            pokedex.scrollIntoView();
         }, 3000)
     } 
 

@@ -11,7 +11,7 @@ window.addEventListener('scroll', () => {// 1º
 })
 
 const mostrarLoader = () => { // Função responsavel por mostrar o loader carregando
-    if(contagemDivLista ==0 && lista.innerHTML > ""){ // Só mostra o loader se a pagina não tiver a pokebola carregando..
+    if(contagemDivLista == 0 && lista.innerHTML > ""){ // Só mostra o loader se a pagina não tiver a pokebola carregando..
     carregarLoader.classList.add('mostrar');// Mostrando o loader
     removerLoader();//Função que tirar o loader depois de 1seg
     console.log(contagemDivLista)
