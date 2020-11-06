@@ -14,7 +14,6 @@ fetch(url)
     .then(resposta => resposta.json())
     .then(pokemons => arrayDePokemons.push(...pokemons.results))
 
-console.log(arrayDePokemons)
 
 function encontrarPokemon(pesquisa, arrayDePokemons) { //Função responsável por filtrar os pokemons de acordo com a "Expressão" digitada.
     /*Recebe como parametro o termo "pesquisado" e os pokemons do arrayDePokemon */
@@ -36,7 +35,7 @@ function exibirPokemon() {
 
     lista.innerHTML = htmlResult; // Inserindo os valores dentro da HTML
     const nome = document.getElementById('nome-pokemon').textContent; // Buscando o conteudo interno dos nomes exibidos
-
+    
     if (caixaValorDigitado.value == '') { // Se a caixa de pesquisa estiver vazia ele volta para a página incial
         lista.innerHTML = '';
         return location.replace('index.html')
@@ -59,7 +58,9 @@ function exibirPokemon() {
         }, 2000)
     }
 
-    if (caixaValorDigitado.value == nome && pokedex > "" && usuarioPertodoFimdaPagina) {  //Se não encontrar o pokemon acontece isso
+    if(caixaValorDigitado.value.toUpperCase() == nome.toUpperCase() || caixaValorDigitado.value.toLowerCase() == nome.toLowerCase() && pokedex > "" && usuarioPertodoFimdaPagina){
+    /* Trata oque é digitada para que se for maiusculo ou minusculo não diferenciar na busca, se tiver mais de 1 pokemon valida e se o usuario não estiver perto do fim da página  */    
+        
         lista.innerHTML = ""
         temPoke = true;
         lista.scrollIntoView();
@@ -79,7 +80,7 @@ function exibirPokemon() {
             pokedex.innerHTML = "";
             pokedex.scrollIntoView();
         }, 3000)
-    }
+    } 
 
     setTimeout(function () { // Espera um tempo (Usuario Digitando) para aparecer o erro
         if (lista.innerHTML == "" && temPoke == true && contagemDivLista == 0) {
