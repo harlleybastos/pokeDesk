@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body{
     display: flex;
     flex-direction: column;
@@ -326,4 +330,23 @@ body{
     50%{
         transform: translateY(-10px);
     }
+}
+
+@keyframes zoom{
+    0%{
+        transform: scale(1);
+    }
+
+    50%{
+        transform: scale(1.1);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+
+.imglogo:hover{
+    animation: zoom 1s linear;
+    cursor: pointer;
 }

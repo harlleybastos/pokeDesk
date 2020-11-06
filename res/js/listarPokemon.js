@@ -1,4 +1,5 @@
-const carregarLoader = document.querySelector('.carregarPokes');
+const logo = document.querySelector('.imglogo');
+
 let numeroDePokemons = 20;
 let referencia = 1;
 const pokedex = document.getElementById('pokedex');
@@ -11,5 +12,7 @@ const consultarPokemons = async () => { /*Função que replica em ordem todos os
 
 consultarPokemons()
 
-
+logo.addEventListener("click", function() {
+   return location.replace('index.html')
+})
 

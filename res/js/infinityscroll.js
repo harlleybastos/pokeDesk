@@ -1,3 +1,6 @@
+const carregarLoader = document.querySelector('.carregarPokes');
+let contagemDivLista = lista.children.length;
+
 window.addEventListener('scroll', () => {// 1º
     const { clientHeight, scrollHeight, scrollTop } = document.documentElement; // copiando o valor das proriedades
     const usuarioPertodoFimdaPagina = scrollTop + clientHeight >= scrollHeight - 10 ; /*Checando se o usuario esta perto do fim da página | Se a distancia entre o topo e o topo visivel do documento
@@ -8,9 +11,10 @@ window.addEventListener('scroll', () => {// 1º
 })
 
 const mostrarLoader = () => { // Função responsavel por mostrar o loader carregando
-    if(lista.innerHTML > ""){ // Só mostra o loader se a pagina não tiver a pokebola carregando..
+    if(contagemDivLista ==0 && lista.innerHTML > ""){ // Só mostra o loader se a pagina não tiver a pokebola carregando..
     carregarLoader.classList.add('mostrar');// Mostrando o loader
     removerLoader();//Função que tirar o loader depois de 1seg
+    console.log(contagemDivLista)
     }
  }
 

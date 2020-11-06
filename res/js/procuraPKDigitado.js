@@ -14,7 +14,7 @@ fetch(url)
     .then(resposta => resposta.json())
     .then(pokemons => arrayDePokemons.push(...pokemons.results))
 
-
+console.log(arrayDePokemons)
 
 function encontrarPokemon(pesquisa, arrayDePokemons) { //Função responsável por filtrar os pokemons de acordo com a "Expressão" digitada.
     /*Recebe como parametro o termo "pesquisado" e os pokemons do arrayDePokemon */
@@ -72,6 +72,7 @@ function exibirPokemon() {
         lista.scrollIntoView();
 
         setTimeout(function () { // Espera um tempo para aparecer o pokemon por conta do tempo do gif
+            contagemDivLista = 1;
             lista.innerHTML = ".";
             caixaValorDigitado.value = ""; //Limpa a caixa de pesquisa
             pegarPoke(nome) // Exibe o pokemon pesquisado
