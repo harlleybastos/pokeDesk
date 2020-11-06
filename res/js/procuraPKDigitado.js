@@ -82,7 +82,7 @@ function exibirPokemon() {
     }
 
     setTimeout(function () { // Espera um tempo (Usuario Digitando) para aparecer o erro
-        if (lista.innerHTML == "" && temPoke == true) {
+        if (lista.innerHTML == "" && temPoke == true && contagemDivLista == 0) {
             const pokeErro = `
             <div class="img-aviso">
                 <h1>Pokemon não encontrado !</h1>
