@@ -1,5 +1,5 @@
 const carregarLoader = document.querySelector('.carregarPokes');
-let contagemDivLista = lista.children.length;
+let contagemDivLista = 0;
 
 window.addEventListener('scroll', () => {// 1º
     const { clientHeight, scrollHeight, scrollTop } = document.documentElement; // copiando o valor das proriedades
@@ -11,17 +11,16 @@ window.addEventListener('scroll', () => {// 1º
 })
 
 const mostrarLoader = () => { // Função responsavel por mostrar o loader carregando
-    if(contagemDivLista == 0 && lista.innerHTML > ""){ // Só mostra o loader se a pagina não tiver a pokebola carregando..
-    carregarLoader.classList.add('mostrar');// Mostrando o loader
-    removerLoader();//Função que tirar o loader depois de 1seg
-    console.log(contagemDivLista)
-    }
+   if(lista.innerHTML > "" && contagemDivLista == 0 && lista.childElementCount > 2){
+      carregarLoader.classList.add('mostrar');// Mostrando o loader
+      removerLoader();//Função que tirar o loader depois de 1seg
+   } 
+   
  }
 
 pegarProximosPokemons = () => { // Função responsável por mostrar os proximos pokemons quando a página for rolada para baixa
     numeroDePokemons += 20; // Adicionando +20 no numero de pokemons na do for da função consultarPokemons()
-    referencia += 19;// Adicionando +20 na referencia do for da função consultarPokemons()
-    consultarPokemons()
+    puxaPoke();
  }
  
 const removerLoader = () => { // Depois de 1 segundo remove o Loader e adiciona mais 20 pokemons

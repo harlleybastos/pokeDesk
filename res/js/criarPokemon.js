@@ -1,5 +1,3 @@
-let lista = document.getElementById('lista-de-pokemons'); // Buscando na HTML a Div com a lista de pokemons
-
 const coloracaoTipos = { //ARRAY COM COR DOS TIPOS DE POKEMONS
     fire: '#FDDFDF',
     grass: '#DEFDE0',
@@ -19,42 +17,38 @@ const coloracaoTipos = { //ARRAY COM COR DOS TIPOS DE POKEMONS
 
 const instanciaTipos = Object.keys(coloracaoTipos); // Retorna o tipo (Fire, Grass..)
 
+
 function criandoCardDoPokemon(pokemon){ // Converter os dados recebidos pelo Fetch em HTML
     const elementoPokemon = document.createElement("div");    //Criando o card do elemento pokemon
     const elementoCor = document.createElement("div");
     elementoCor.classList.add("cor-badge");
-    elementoPokemon.classList.add("pokemon"); //Adicionando classe no elemento criado
+    elementoPokemon.classList.add("pokemonn"); //Adicionando classe no elemento criado
     elementoPokemon.onclick = function(){ //Adicionando a função de click no elemento criado com a função de s
         pokemonSelecionado(pokemon.id)
     }
 
     const listaTiposPokemons = pokemon.types.map(elemento => elemento.type.name );//Entrando em pokemon.types e retornando o type.name ja tratado (Percorre o array)
     const tiposPokemon = instanciaTipos.find(tipo => listaTiposPokemons.indexOf(tipo) > -1); //Recebe os textos (Fire, Grass..) e procura o primeiro que esta no index
-
     const nomePokemonComEstilo = pokemon.name[0].toUpperCase() + pokemon.name.slice(1); // Alterando o estilo da fonte de cada nome | Primeira letra maiúcula
-    const corDoCard = coloracaoTipos[tiposPokemon];// Recebe a cor do pokemon de acordo com o elemento
-    elementoPokemon.style.backgroundColor = corDoCard; //Aplica a do pokemon correspondendo no elemento
-    elementoCor.style.backgroundColor = corDoCard;
     
     
     //Conteudo que vai dentro do elemento criado
     const conteudoDaDiv = `
-        <div class="container-foto-pokemon"> 
+        <div class="container-foto-pokemonn"> 
             <img src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${pokemon.id}.svg"/>
         </div>
-        <div class="fundo">
-            <img class="pokeball" src="https://i.imgur.com/8qOOkAG.png" />
+        <div class="fundon">
+            <img class="pokeballn" src="https://i.imgur.com/8qOOkAG.png" />
         </div>
-        <div class="informacoes-pokemon">
-            <span class="numero-pokemon">#${pokemon.id.toString().padStart(3, '0')}</span>
-            <h3 class="nome-pokemon">${nomePokemonComEstilo}</h3>
-            <small class="tipo-pokemon"></span></small>
+        <div class="informacoes-pokemonn">
+            <span class="numero-pokemonn">#${pokemon.id.toString().padStart(3, '0')}</span>
+            <h3 class="nome-pokemonn">${nomePokemonComEstilo}</h3>
         </div>
     
     `;
 
     const complementa = `
-            <small class="tipo-pokemon"> <span>Tipo: <span class="titulopok">${tiposPokemon}</span></small>
+            <small class="tipo-pokemonn"> <span>Tipo: <span class="titulopokn">${tiposPokemon}</span></small>
     `
     elementoCor.innerHTML = complementa;
     elementoPokemon.innerHTML = conteudoDaDiv; // Colocando dentro da div criada todo o HTML da const ConteudodaDIV

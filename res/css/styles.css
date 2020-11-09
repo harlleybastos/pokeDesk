@@ -46,7 +46,6 @@ body{
 .pokemon:hover{
     animation: bounce 0.5s linear;
     cursor: pointer;
-    background: url('https://i.imgur.com/lnFsYHy.png');
     background-size: 100px;
     background-repeat: no-repeat;
     background-size: 100px;
@@ -95,14 +94,17 @@ body{
 
 .pokemon .informacoes-pokemon{
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 .pokemon .informacoes-pokemon h3{
     font-family: 'Roboto', sans-serif;
+    text-transform: capitalize;
+    font-size: 1.5rem;
 }
 .pokemon .numero-pokemon{
     background: #fff;
     border-radius: 10px;
-    font-size: 0.8em;
+    font-size: 1em;
     padding: 5px 10px;
     font-family: 'Open Sans', sans-serif;
 }
@@ -110,42 +112,18 @@ body{
 .pokemon .tipo-pokemon {
     margin: 15px 0 7px;
     letter-spacing: 1px;
+    border: 2px solid #000000;
 }
 
 .cor-badge{
     font-family: 'Roboto', sans-serif;
-    font-weight: lighter;
-    border: black solid;
-    height: 30px;
+    border:2px black solid;
+    padding: 20px;
     box-shadow: 0 3px 5px rgba(100, 100, 100, 0.5);
 }
 .titulopok{
     text-transform: capitalize;
 }
-
-#pagination{
-    margin: 10px;
-
-}
-
-#paginacao_link{
-    font-size: 1.2rem;
-    font-family: 'Open Sans', sans-serif;
-    text-decoration: none;
-    padding: 8px;
-    color:black;
-}
-
-#paginacao_linkativo{
-    font-size: 1.2rem;
-    font-family: 'Open Sans', sans-serif;
-    text-decoration: none;
-    padding: 8px;
-    color:red;
-}
-
-
-
 .popup{
     background-color: #eee;
     top:0;
@@ -164,8 +142,16 @@ body{
 .pesquisa{
     margin-top: 50%;
 }
+
+.popup .informacoes-pokemon {
+    padding: 50px;
+}
 .popup .container-foto-pokemon{
-    padding: 30px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 50%;
+    left: 10%;
+    
 }
 
 .popup .container-foto-pokemon img {
@@ -176,10 +162,10 @@ body{
 
 .popup .informacoes-pokemon .tipo-pokemon{
     margin: 15px 0 7px;
-    padding-left: 20px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: 'Roboto', sans-serif;
-    text-transform: capitalize;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
 .popup .informacoes-pokemon .numero-pokemon{
@@ -187,22 +173,28 @@ body{
     border-radius: 10px;
     font-size: 0.9em;
     padding: 5px 10px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .popup .informacoes-pokemon .altura-pokemon{
-    padding-right: 20px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .popup .informacoes-pokemon .peso-pokemon{
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-family: 'Roboto', sans-serif;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 20px;
 }
 .popup .informacoes-pokemon .nome-pokemon{
     font-family: 'Roboto', sans-serif;
-    font-size: 2rem;
+    font-size: 2.2rem;
+    text-align: center;
 }
 #fecharBTN{
     width: 140px;
@@ -349,4 +341,85 @@ body{
 .imglogo:hover{
     animation: zoom 1s linear;
     cursor: pointer;
+}
+
+.hab{
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 20px;
+}
+
+.pokeinfo{
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 10px;
+}
+
+.pokemonn{
+    background-color: #eee;
+    border-radius: 20px;
+    box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    widows: 400px;
+}
+
+.pokemonn:hover{
+    animation: bounce 0.5s linear;
+    cursor: pointer;
+    background-size: 100px;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: 95px 310px;
+}
+
+
+
+.pokemonn .container-foto-pokemonn{
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+    text-align: center;
+}
+.pokemonn .container-foto-pokemonn img{
+    margin-top: 40px;
+    max-width: 160px;
+    position: relative;
+    justify-content: center;
+}
+
+.pokemonn .fundon{
+    margin-top: 40px;
+}
+.pokemonn .fundon img{
+    max-width: 100px;
+    top: 10%;
+    position: relative;
+}
+
+.pokemonn .informacoes-pokemonn{
+    margin-top: 20px;
+}
+.pokemonn .informacoes-pokemonn h3{
+    font-family: 'Roboto', sans-serif;
+}
+.pokemonn .numero-pokemonn{
+    background: #fff;
+    border-radius: 10px;
+    font-size: 0.8em;
+    padding: 5px 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.pokemonn .tipo-pokemonn {
+    letter-spacing: 1px;
+}
+.titulopokn{
+    text-transform: capitalize;
 }
