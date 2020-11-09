@@ -1,5 +1,6 @@
 const arrayDePokemons = []; //Array responsável por guardar todos os resultados
 const caixaValorDigitado = document.getElementById('caixa-pesquisa'); // Campo em que o usuario digita
+const pokedex = document.getElementById('pokedex');
 
 const { clientHeight, scrollHeight, scrollTop } = document.documentElement; // copiando o valor das proriedades
 const usuarioPertodoFimdaPagina = scrollTop + clientHeight >= scrollHeight - 10; /*Checando se o usuario esta perto do fim da página | Se a distancia entre o topo e o topo visivel do documento
@@ -24,24 +25,29 @@ function encontrarPokemon(pesquisa, arrayDePokemons) { //Função responsável p
     })
 }
 
-
-
-
 function exibirPokemon() {
     lista.innerHTML = "";
-        
-    if (lista.childElementCount < 1) { // Se tiver menos de 1 pokemon ele aparece isso
-        const pokeErro = `
-            <div class="img-aviso">
-                <h1>Pokemon não encontrado !</h1>
-                <img src="https://i.imgur.com/VGtUTtC.gif"/>
-            </div>
-            `
-        lista.innerHTML = "";
+
+    const pokeErro = `
+    <div class="img-aviso">
+        <h1>Pokemon não encontrado !</h1>
+        <img src="https://i.imgur.com/VGtUTtC.gif"/>
+    </div>
+    `
+
+    const resultadoPokemon = encontrarPokemon(this.value, arrayDePokemons); //Recebe o valor digitado na pesquisa como parametro e percorre o array para encontrar o mesmo
+
+    if(!resultadoPokemon.length){ // Se não tiver o pokemon dentro do Array ele procura de novo na api com numero
+        pegarPoke(this.value);
+    } else {
+        temPoke = false;
+    }
+
+    if (temPoke == false){
         pokedex.innerHTML = pokeErro;
     }
+
     
-    const resultadoPokemon = encontrarPokemon(this.value, arrayDePokemons); //Recebe o valor digitado na pesquisa como parametro e percorre o array para encontrar o mesmo
     const htmlResult = resultadoPokemon.map(pokemon => { //Mapeando e retornando os valores filtrados
         return `
         <h3 class="hidden" id="nome-pokemon">${pokemon.name}</h3>
@@ -51,25 +57,15 @@ function exibirPokemon() {
     lista.innerHTML = htmlResult; // Inserindo os valores dentro da HTML
     const nome = document.getElementById('nome-pokemon').textContent; // Buscando o conteudo interno dos nomes exibidos
 
-
-
     if (caixaValorDigitado.value == '') { // Se a caixa de pesquisa estiver vazia ele volta para a página incial
         lista.innerHTML = '';
         return location.replace('index.html')
     }
 
-
     if (caixaValorDigitado.value > "" && lista.childElementCount >= 1) { // Se o usuario estiver digitando e tiver mais de um pokemon na lista ele aparece o pokemon
         pokedex.innerHTML = '' // Limpa a tela pra evitar que a pokebola "Pokemon não encontrado apareça"
-        const divCarrega = `
-        <div class="img-aviso">
-        <h1>Procurando...</h1>
-        <img src="https://i.imgur.com/p1tekMG.gif"/>      
-        </div>
-        `
-        contagemDivLista = 1; // Usado como referencia de erro no If do erro
         pegarPoke(nome)
     }
 
 }
-caixaValorDigitado.addEventListener('keyup', exibirPokemon);
+caixaValorDigitado.addEventListener('input', exibirPokemon);

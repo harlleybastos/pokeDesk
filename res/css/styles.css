@@ -125,13 +125,12 @@ body{
     text-transform: capitalize;
 }
 .popup{
-    background-color: #eee;
+    background-color: rgba(255, 240, 240, 0.980);
     top:0;
     left: 0;
     height: 100vh;
     box-shadow: 0 3px 15px rgba(100, 100, 100, 0.5);
     width: 100vw;
-    opacity: 0.95;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,11 +168,13 @@ body{
 }
 
 .popup .informacoes-pokemon .numero-pokemon{
+    position: absolute;
     background: #fff;
-    border-radius: 10px;
-    font-size: 0.9em;
-    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 2.2rem;
+    padding: 7px;
     font-family: 'Roboto', sans-serif;
+    top: 10px;
 }
 
 .popup .informacoes-pokemon .altura-pokemon{
@@ -194,7 +195,13 @@ body{
 .popup .informacoes-pokemon .nome-pokemon{
     font-family: 'Roboto', sans-serif;
     font-size: 2.2rem;
+    text-transform: uppercase;
     text-align: center;
+    margin-top: 10px;
+    padding:5px;
+    margin-left: 120px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 10px;
 }
 #fecharBTN{
     width: 140px;
@@ -223,6 +230,7 @@ body{
 }
 
 #caixa-pesquisa{
+    outline: none;
     width: 100vh;
     height: 100px;
     padding: 20px;
@@ -422,4 +430,42 @@ body{
 }
 .titulopokn{
     text-transform: capitalize;
+}
+
+.table {
+    border:1px solid rgb(0, 0, 0);
+    padding: 20px;
+    letter-spacing: 1px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.table tbody{
+    padding:20px;
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.table tbody tr{
+    text-align: center;
+    border: 1px solid rgb(0, 0, 0);
+    padding:10px;
+    border-spacing: 10px;
+}
+
+.table tbody tr td{
+    padding:15px;
+    text-transform: uppercase;
+}
+
+.table tbody tr .titulo-table{
+    padding:15px;
+    border: 1px solid rgb(0, 0, 0);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.table tbody tr .titulo-table:nth-child(1){
+    background-color: rgba(255, 0, 0, 0.705);
 }

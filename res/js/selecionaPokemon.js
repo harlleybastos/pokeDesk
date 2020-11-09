@@ -2,9 +2,12 @@ const mostrarPopUp = (pokemon) =>{ // Função responsável por abrir o PopUp qu
     const tipos = pokemon.types.map(tipo => tipo.type.name).join(', ');
     const nomePokemonComEstilo = pokemon.name[0].toUpperCase() + pokemon.name.slice(1); // Alterando o estilo da fonte de cada nome | Primeira letra maiúcula
     const habilidades = pokemon.abilities.map(habilidade => habilidade.ability.name).join(', ');
-    const informacoesNumero = pokemon.stats.map(st =>{
+    const informacoesPokemon = pokemon.stats.map(st =>{
         return `
-        <p class="pokeinfo">${st.stat.name} : ${st.base_stat}</p>
+        <tr>
+            <td class="titulo-table">${st.stat.name}</td>
+            <td >${st.base_stat}</td>
+        </tr>
         `
 
     }).join('');
@@ -16,13 +19,19 @@ const mostrarPopUp = (pokemon) =>{ // Função responsável por abrir o PopUp qu
                 <img src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${pokemon.id}.svg"/>
             </div>
          <div class="informacoes-pokemon">
-            <span class="numero-pokemon">#${pokemon.id.toString().padStart(3, '0')}</span>
-            <h3 class="nome-pokemon">${nomePokemonComEstilo}</h3>
-            <small class="hab">Habilidades: ${habilidades}</small>
-            <small class="altura-pokemon">Altura: ${pokemon.height} cm</small>
-            <small class="peso-pokemon">Peso: ${pokemon.weight} KG </small>
-            <small class="tipo-pokemon">Tipo: ${tipos} </small>
-                ${informacoesNumero}
+            <div class="info-topo-selecionado">
+                <h3 class="numero-pokemon">#${pokemon.id.toString().padStart(3, '0')}</h3>
+                <h3 class="nome-pokemon">${nomePokemonComEstilo}</h3>
+            </div>
+            <table class="table">
+                <tbody>
+                <tr><td class="titulo-table">Habilidades</td><td>${habilidades}</td></tr>
+                <tr><td class="titulo-table">Altura</td><td>${pokemon.height}</td></tr>
+                <tr><td class="titulo-table">Peso</td><td>${pokemon.weight}</td></tr>
+                <tr><td class="titulo-table">Tipo</td><td>${tipos}</td></tr>
+                ${informacoesPokemon}
+                </tbody>
+            </table>
         </div>
     </div>
     `
