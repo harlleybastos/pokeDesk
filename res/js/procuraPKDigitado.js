@@ -10,7 +10,7 @@ let temPoke = true; // Variavel para usar como referencia para erros
 
 
 
-const url = `https://pokeapi.co/api/v2/pokemon?limit=150`;
+const url = `https://pokeapi.co/api/v2/pokemon?limit=893`;
 
 fetch(url)
     .then(resposta => resposta.json())

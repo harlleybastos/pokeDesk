@@ -125,6 +125,9 @@ body{
     text-transform: capitalize;
 }
 .popup{
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
     background-color: rgba(255, 240, 240, 0.980);
     top:0;
     left: 0;
@@ -144,8 +147,10 @@ body{
 
 .popup .informacoes-pokemon {
     padding: 50px;
+    overflow: hidden;
 }
 .popup .container-foto-pokemon{
+    overflow: hidden;
     padding: 40px;
     background: #fff;
     border-radius: 50%;
@@ -155,12 +160,15 @@ body{
 
 .popup .container-foto-pokemon img {
     max-width: 300px;
+    overflow: hidden;
     top: 10%;
+    object-fit: cover;
     position: relative;
 }
 
 .popup .informacoes-pokemon .tipo-pokemon{
     margin: 15px 0 7px;
+    overflow: hidden;
     font-size: 1.2rem;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
@@ -168,6 +176,7 @@ body{
 }
 
 .popup .informacoes-pokemon .numero-pokemon{
+    overflow: hidden;
     position: absolute;
     background: #fff;
     border-radius: 15px;
@@ -178,6 +187,7 @@ body{
 }
 
 .popup .informacoes-pokemon .altura-pokemon{
+    overflow: hidden;
     font-size: 1.2rem;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
@@ -186,6 +196,7 @@ body{
 }
 
 .popup .informacoes-pokemon .peso-pokemon{
+    overflow: hidden;
     font-size: 1.2rem;
     font-family: 'Roboto', sans-serif;
     text-transform: uppercase;
@@ -193,6 +204,7 @@ body{
     margin-bottom: 20px;
 }
 .popup .informacoes-pokemon .nome-pokemon{
+    overflow: hidden;
     font-family: 'Roboto', sans-serif;
     font-size: 2.2rem;
     text-transform: uppercase;
@@ -204,6 +216,7 @@ body{
     border-radius: 10px;
 }
 #fecharBTN{
+    overflow: hidden;
     width: 140px;
     height: 50px;
     top: -40%;
@@ -433,11 +446,13 @@ body{
 }
 
 .table {
+    overflow: hidden;
     border:1px solid rgb(0, 0, 0);
     padding: 20px;
     letter-spacing: 1px;
     border-collapse: collapse;
     margin-bottom: 20px;
+    object-fit: cover;
 }
 
 .table tbody{
