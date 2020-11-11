@@ -5,6 +5,26 @@ const pokexibe = document.querySelector('.pokemonn');
 const resultadoPokemon = '';
 let to;
 
+const coloracaoTipos = { //ARRAY COM COR DOS TIPOS DE POKEMONS
+    fire: '#FDDFDF',
+    grass: '#DEFDE0',
+    eletric: '#FCF7DE',
+    water: '#DEF3FD',
+    ground:'#f4e7da',
+    rock:'#d5d5d4',
+    fairy:'#fceaff',
+    poison:'#98d7a5',
+    bug:'#f8d5a3',
+    dragon:'#97b3e6',
+    psychic:'#eaeda1',
+    flying:'#f5f5f5',
+    fighting:'#e6e0d4',
+    normal:'#f5f5f5'
+};
+
+const instanciaTipos = Object.keys(coloracaoTipos); // Retorna o tipo (Fire, Grass..)
+
+
 const { clientHeight, scrollHeight, scrollTop } = document.documentElement; // copiando o valor das proriedades
 const usuarioPertodoFimdaPagina = scrollTop + clientHeight >= scrollHeight - 10; /*Checando se o usuario esta perto do fim da página | Se a distancia entre o topo e o topo visivel do documento
 somada a altura entre topo e o final da parte visivel da pagina é maior ou igual a altura total de desse documento - 10 */
