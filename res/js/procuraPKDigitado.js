@@ -20,8 +20,6 @@ fetch(url)
     .then(resposta => resposta.json())
     .then(pokemons => arrayDePokemons.push(...pokemons.results))
 
-    console.log(arrayDePokemons);
-
 function encontrarPokemon(pesquisa, arrayDePoks) { //Função responsável por filtrar os pokemons de acordo com a "Expressão" digitada.
     /*Recebe como parametro o termo "pesquisado" e os pokemons do arrayDePokemon */
     return arrayDePoks.filter((pokemon, indice) => { //Filtra dentro do Array
