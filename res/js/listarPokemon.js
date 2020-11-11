@@ -6,6 +6,11 @@ logo.addEventListener("click", function() {
 
 const mostraPokemon = (pokemon) => { // Mapeia e mostra todos os pokemons na ordem
 
+    const tipo = pokemon.map(pokemon => {return pokemon.tipo});
+    const tiposPokemon = pokemon.find(typo => tipo.indexOf(typo) > -1); //Recebe os textos (Fire, Grass..) e procura o primeiro que esta no index
+    const corDoCard = coloracaoTipos[tiposPokemon];
+    document.querySelector('.pokemon').style.backgroundColor = corDoCard;
+
    const htmlPOKEMON = pokemon.map(pok => `
    <div class="pokemon" onclick="pokemonSelecionado(${pok.id})">
        <div class="container-foto-pokemon"> 
@@ -28,7 +33,7 @@ const mostraPokemon = (pokemon) => { // Mapeia e mostra todos os pokemons na ord
 
 window.addEventListener("load", function() {
    caixaValorDigitado.focus();
+   
 })
-
-puxaPoke();
+puxaPoke()
 
