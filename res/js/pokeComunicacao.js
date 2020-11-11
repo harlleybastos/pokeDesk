@@ -8,7 +8,6 @@ const pegarPoke = async id => {
     const pokemon = await resposta.json();
     criandoCardDoPokemon(pokemon) // Função que cria os cards
     return pokemon;
-
 }
 
 const pokemonSelecionado = async (id) => { // Caso o pokemon seja clicado / selecionado ele invoca essa função
