@@ -11,7 +11,7 @@ window.addEventListener('scroll', () => {// 1º
 })
 
 const mostrarLoader = () => { // Função responsavel por mostrar o loader carregando
-   if(lista.innerHTML > "" && contagemDivLista == 0 && lista.childElementCount > 2){
+   if(caixaValorDigitado.value == ""){
       carregarLoader.classList.add('mostrar');// Mostrando o loader
       removerLoader();//Função que tirar o loader depois de 1seg
    } 
