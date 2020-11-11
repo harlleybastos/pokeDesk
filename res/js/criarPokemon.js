@@ -50,8 +50,6 @@ function criandoCardDoPokemon(pokemon){ // Converter os dados recebidos pelo Fet
     const complementa = `
             <small class="tipo-pokemonn"> <span>Tipo: <span class="titulopokn">${tiposPokemon}</span></small>
     `
-    console.log(listaTiposPokemons)
-
     elementoCor.innerHTML = complementa;
     elementoPokemon.innerHTML = conteudoDaDiv; // Colocando dentro da div criada todo o HTML da const ConteudodaDIV
     // Setando a div criada como filha da div lista-de-pokemons

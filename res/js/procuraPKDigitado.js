@@ -38,7 +38,7 @@ function deBounceTime (event) {
 }
 
 function exibirPokemon(e) {
-    
+    lista.innerHTML = ""
     const pokeErro = `
     <div class="img-aviso">
     <h1>Pokemon não encontrado !</h1>
@@ -55,7 +55,6 @@ function exibirPokemon(e) {
         })
     }
 
-    lista.innerHTML = ""
     Promise.all(resultadoPokemon.map(async pokemon => { // Espera resolver todos os valores para apresentar na tela
         return await pegarPoke(pokemon.name);
     }));
