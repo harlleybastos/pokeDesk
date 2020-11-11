@@ -2,6 +2,7 @@ const arrayDePokemons = []; //Array responsável por guardar todos os resultados
 const caixaValorDigitado = document.getElementById('caixa-pesquisa'); // Campo em que o usuario digita
 const pokedex = document.getElementById('pokedex');
 const pokexibe = document.querySelector('.pokemonn');
+const resultadoPokemon = '';
 let to;
 
 const { clientHeight, scrollHeight, scrollTop } = document.documentElement; // copiando o valor das proriedades
@@ -33,11 +34,11 @@ function encontrarPokemon(pesquisa, arrayDePoks) { //Função responsável por f
 function deBounceTime (event) {
     clearTimeout(to);
     to = setTimeout(function () {
-        encontrarPokemon(event.target.value, arrayDePokemons);
+        exibirPokemon(event);
     }, 600)
 }
 
-function exibirPokemon() {
+function exibirPokemon(e) {
     
     const pokeErro = `
     <div class="img-aviso">
@@ -46,10 +47,10 @@ function exibirPokemon() {
     </div>
     `
     
-    const resultadoPokemon = encontrarPokemon(this.value, arrayDePokemons); //Recebe o valor digitado na pesquisa como parametro e percorre o array para encontrar o mesmo
+    const resultadoPokemon = encontrarPokemon(e.target.value, arrayDePokemons); //Recebe o valor digitado na pesquisa como parametro e percorre o array para encontrar o mesmo
 
     if(!resultadoPokemon.length){ // Se não tiver o pokemon dentro do Array ele procura de novo na api com numero
-        pegarPoke(this.value)
+        pegarPoke(e.target.value)
         .catch(() =>{ // catch realiza um ação se acontecer
             pokedex.innerHTML = pokeErro;
         })
@@ -68,5 +69,4 @@ function exibirPokemon() {
 
 caixaValorDigitado.addEventListener('input', event => {
     deBounceTime(event);
-    exibirPokemon()
 });
