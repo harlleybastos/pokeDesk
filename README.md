@@ -15,7 +15,7 @@ ___
 
 ## 📜 Sobre
 
-O projeto **Pokédex** é um Website que foi /desenvolvido com a finalidade de colocar em prática todos os conhecimento adquiridos até o momento e apresentado como primeiro projeto final na instituição **Pecege**. Sua função é exibir todos os 151 pokemons, tanto por pesquisa quanto por busca na tela.
+O projeto **Pokédex** é um Website que foi /desenvolvido com a finalidade de colocar em prática todos os conhecimento adquiridos até o momento e apresentado como primeiro projeto final na instituição **Pecege**. Sua função é exibir todos os 893 pokemons, tanto por pesquisa quanto por busca na tela.
 ___
 
 ## 🚀 Técnologias Utilizadas
