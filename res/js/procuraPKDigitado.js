@@ -30,7 +30,7 @@ function encontrarPokemon(pesquisa, arrayDePoks) { //Função responsável por f
     })
 }
 
-function deBounceTime (event) {
+function deBounceTime(event) {
     clearTimeout(to);
     to = setTimeout(function () {
         exibirPokemon(event);
@@ -45,24 +45,25 @@ function exibirPokemon(e) {
     <img src="https://i.imgur.com/VGtUTtC.gif"/>
     </div>
     `
-    
-    const resultadoPokemon = encontrarPokemon(e.target.value, arrayDePokemons); //Recebe o valor digitado na pesquisa como parametro e percorre o array para encontrar o mesmo
 
-    if(!resultadoPokemon.length){ // Se não tiver o pokemon dentro do Array ele procura de novo na api com numero
-        pegarPoke(e.target.value)
-        .catch(() =>{ // catch realiza um ação se acontecer
-            pokedex.innerHTML = pokeErro;
-        })
+    if (caixaValorDigitado.value.length >= 1) {
+        const resultadoPokemon = encontrarPokemon(e.target.value, arrayDePokemons); //Recebe o valor digitado na pesquisa como parametro e percorre o array para encontrar o mesmo
+
+        if (!resultadoPokemon.length) { // Se não tiver o pokemon dentro do Array ele procura de novo na api com numero
+            pegarPoke(e.target.value)
+                .catch(() => { // catch realiza um ação se acontecer
+                    pokedex.innerHTML = pokeErro;
+                })
+        }
+
+        Promise.all(resultadoPokemon.map(async pokemon => { // Espera resolver todos os valores para apresentar na tela
+            return await pegarPoke(pokemon.name);
+        }));
+    } else {
+        puxaPoke();
     }
 
-    Promise.all(resultadoPokemon.map(async pokemon => { // Espera resolver todos os valores para apresentar na tela
-        return await pegarPoke(pokemon.name);
-    }));
 
-    if (caixaValorDigitado.value == '') { // Se a caixa de pesquisa estiver vazia ele volta para a página incial
-        lista.innerHTML = '';
-        return location.replace('index.html')
-    }
 }
 
 caixaValorDigitado.addEventListener('input', event => {
