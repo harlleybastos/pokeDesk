@@ -2,6 +2,10 @@
     <img src="https://i.imgur.com/qwgvHDm.png"/>
 </h1>
 
+<h1 align="center">
+    <img src="res/images/projetoPokédexPronto.gif">
+</h1>
+
 ## 📕 Indice
 
 - [Sobre](#-sobre)
