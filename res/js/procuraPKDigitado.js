@@ -60,6 +60,7 @@ function exibirPokemon(e) {
             return await pegarPoke(pokemon.name);
         }));
     } else {
+        pokedex.innerHTML= "";
         puxaPoke();
     }
 
